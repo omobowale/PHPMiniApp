@@ -15,7 +15,7 @@ $DB = new DB();
 checkAccess();
 
 //CHECK IF USER HAS REGISTERED OR NOT (FUNCTION IS DEFINED IN "functions.php" file in "others" folder)
-checkRegistrationStatus($DB->conn, "apply.php");
+checkRegistrationStatus($DB->conn, "status.php");
        
 ?>
 
