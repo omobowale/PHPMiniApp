@@ -3,27 +3,28 @@
 <html>
 
 <?php
+//INCLUDE NECESSARY FILES
 include_once("others/header_footer.php");
 include("others/functions.php");
 include("others/DB.php");
-
-$db = new DB();
-echo isAlreadyRegistered($db->conn, "ytyty34");
     
 ?>
     
 <body>
-
+    
+    <!--CREATE LOGIN FORM-->
     <div class="container">
       
-            <div class="offset-md-3 col-xs-12 col-sm-12 col-md-6 px-0 mb-3 text-center">
-                <div style="background-color:white; width:70px; height:5px; margin-top:2px"></div>
-                <div style="background-color:white; width:60px; height:5px; margin-top:2px"></div>
+            <div class="offset-md-3 col-xs-12 col-sm-12 col-md-6 px-0 mb-3 mt-4 text-center">
+                <div style="background-color:white; width:61px; height:5px; margin-top:2px"></div>
                 <div style="background-color:white; width:50px; height:5px; margin-top:2px"></div>
                 <div style="background-color:white; width:40px; height:5px; margin-top:2px"></div>
-                <div style="background-color:white; width:30px; height:5px; margin-top:2px"></div>
-                <div style="background-color:white; width:20px; height:5px; margin-top:2px"></div>
+                <div style="background-color:white; width:31px; height:5px; margin-top:2px"></div>
+                <div style="background-color:white; width:23px; height:5px; margin-top:2px"></div>
+                <div style="background-color:white; width:16px; height:5px; margin-top:2px"></div>
                 <div style="background-color:white; width:10px; height:5px; margin-top:2px"></div>
+                <div style="background-color:white; width:5px; height:5px; margin-top:2px"></div>
+                <div style="background-color:white; width:1px; height:5px; margin-top:2px"></div>
             </div>
             <div class="offset-md-3 col-xs-12 col-sm-12 col-md-6 bg-white px-5 pt-2" style="height:350px;">
                 <h3 class="text-center mt-4 text-info text-uppercase pb-3">Login</h3>
@@ -40,11 +41,8 @@ echo isAlreadyRegistered($db->conn, "ytyty34");
       
     </div>
     
-   <?php
-    include("others/footer.php");
-    
-    ?>
-    
+  
+    <!--INCLUDE THE JS FILE TO PROCESS LOGIN FORM-->
     <script src="js/index.js">
     </script>
 </body>

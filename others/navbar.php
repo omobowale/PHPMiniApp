@@ -1,5 +1,6 @@
+<!--CREATE NAVIGATION BAR-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">PHPMiniApp</a>
+  <a class="navbar-brand" href="login.php">PHPMiniApp</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,23 +10,24 @@
         <a class="nav-link" href="login.php">Home <span class="sr-only">(current)</span></a>
       </li>
     <?php 
+        //Don't display the application info if session is not set. If no one is currently logged in
         
         if(isset($_SESSION["acxsc"])){   ?>
         
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Navigate
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="status.php">Application Status</a>
-          <a class="dropdown-item" href="detail.php">Application Details</a>
-        </div>
-      </li>
-        
-        
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Application Info
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="status.php">Application Status</a>
+                  <a class="dropdown-item" href="detail.php">Application Details</a>
+                </div>
+              </li>
+
         <?php
-        }
+            }
     ?>
+        
     </ul>
   </div>
 </nav>

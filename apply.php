@@ -1,23 +1,39 @@
-<! doctype html>
+<?php 
 
-<html>
-  
-<?php
+//START SESSION
 session_start();
-include_once("others/header_footer.php");
+
+//REQUIRE THE NECESSARY FILES
 require("others/functions.php");
 require("others/DB.php");
 
+//CREATE DATABASE OBJECT FROM DB CLASS (DEFINED IN "DB.php" file in "others" folder)
 $DB = new DB();
+
+//CHECK IF USER HAS ACCESS TO PAGE (FUNCTION IS DEFINED IN "functions.php" file in "others" folder)
 checkAccess();
+
+//CHECK IF USER HAS REGISTERED OR NOT (FUNCTION IS DEFINED IN "functions.php" file in "others" folder)
 checkRegistrationStatus($DB->conn, "apply.php");
-    
-    
+       
+?>
+
+
+
+<!--BEGIN HTML-->
+<! doctype html>
+<html>
+  
+<?php
+//INCLUDE THE HEADER AND FOOTER
+include_once("others/header_footer.php");
+
 ?>
 
 <body>
-    <div class="container mb-5">
-       
+    
+    <!--CREATE APPLICATION FORM-->
+    <div class="container" style="margin-bottom: 90px;">       
         <div class="offset-md-2 col-xs-12 col-sm-12 col-md-8 bg-white px-5">
             <h3 class="text-center mt-4 text-info text-uppercase pb-3 pt-4">Online Application</h3>
             
@@ -139,51 +155,8 @@ checkRegistrationStatus($DB->conn, "apply.php");
         </div>
     </div>
     
-    
-    
-    
-    
-    <script>
-    
-        $(function(){
-            
-            $("#applicationform").submit(function(event){
-                
-                
-                
-                event.preventDefault();
-            
-                
-                //get all the user inputs
-                var formdata = new FormData(this);
-                
-                if(confirm("Are you sure you want to submit this application? \nYou won't be able to edit once submitted")){
-                
-                $.ajax({
-                    url: "others/validateapplicationform.php",
-                    type: "post",
-                    data: formdata,
-                    processData: false,
-                    contentType: false,
-                    success: function (data){
-                        if(data.length == 64){
-                            window.location.href = "others/go.php?response=" + data;
-                        }
-                        else{
-                            $("#message").html("<small class='text-danger'>" + data + "</small>");
-                        }
-                    },
-                    error: function (){
-                        
-                    }
-                });
-                    
-                }
-                
-                
-            })
-        })
-        
+    <!--INCLUDE JS FILE TO PROCESS APPLICATION FORM-->
+    <script src="js/index.js">
     </script>
     
 </body>

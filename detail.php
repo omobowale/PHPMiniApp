@@ -1,36 +1,44 @@
-<! doctype html>
+<?php
 
+//START SESSION
+session_start();
+
+//REQUIRE THE NECESSARY FILES
+require("others/functions.php");     //ALL FUNCTIONS ARE DEFINED IN THIS FILE
+require("others/DB.php");            //DATABASE FUNCTIONS ARE DEFINED IN THIS FILE
+
+//CREATE DATABASE OBJECT FROM DB CLASS (DEFINED IN "DB.php" file in "others" folder)
+$DB = new DB();
+
+//CHECK IF USER HAS ACCESS TO PAGE (FUNCTION IS DEFINED IN "functions.php" file in "others" folder)
+checkAccess();
+
+//CHECK IF USER HAS REGISTERED OR NOT (FUNCTION IS DEFINED IN "functions.php" file in "others" folder)
+checkRegistrationStatus($DB->conn, "apply.php");
+       
+?>
+
+<!--BEGIN HTML-->
+<! doctype html>
 <html>
   
 <?php
-session_start();
+//INCLUDE THE HEADER AND FOOTER
 include_once("others/header_footer.php");
-require("others/functions.php");
-require("others/DB.php");
 
-    
-$DB = new DB();
-
-checkAccess();
-checkRegistrationStatus($DB->conn, "detail.php");
-
-    
+//FETCH DETAILS OF USER
 $details = fetchDetails(decodeAccessCode($_SESSION["acxsc"]));
+
+//GET SUBJECTS FROM THE DETAILS
 $subjects = getSubjects($details->bestsubjects);
 
 ?>
 
 <body>
-    <div class="container">
-        <div class="offset-md-2 col-xs-12 col-sm-12 col-md-8 p-0 mt-2">
-                <div style="background-color:white; width:70px; height:5px; margin-top:2px"></div>
-                <div style="background-color:white; width:60px; height:5px; margin-top:2px"></div>
-                <div style="background-color:white; width:50px; height:5px; margin-top:2px"></div>
-                <div style="background-color:white; width:40px; height:5px; margin-top:2px"></div>
-                <div style="background-color:white; width:30px; height:5px; margin-top:2px"></div>
-                <div style="background-color:white; width:20px; height:5px; margin-top:2px"></div>
-                <div style="background-color:white; width:10px; height:5px; margin-top:2px"></div>
-        </div>
+    
+    <!--CREATE DETAILS PAGE-->
+    <div class="container" style="margin-bottom: 90px;">
+        
         <div class="offset-md-2 col-xs-12 col-sm-12 col-md-8 bg-white px-5 mt-1">
             <div class="jumobotron text-center">
             <?php if(isset($_GET["m"]) and ($_GET["m"] == 1)) echo "<p class='alert alert-info'>You have already registered</p>" ?>
@@ -103,17 +111,10 @@ $subjects = getSubjects($details->bestsubjects);
                 </div>
             
             </div>
-            
-            
         </div>        
-        
-
-        
-        
-        
-    </div>
+    </div>     <!--END OF .container DIV-->
     
-    
+     
 </body>
 
 </html>

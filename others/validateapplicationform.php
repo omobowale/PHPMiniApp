@@ -1,8 +1,13 @@
 <?php
+
+//START SESSION
 session_start();
+
+//INCLUDE THE REQUIRED FILES
 require("DB.php");
 require("functions.php");
 
+//INITIALIZE NECESSARY VARIABLES TO HOLD APPLICATION FORM DATA FROM apply.php
 $error = "";
 $subjects = "";
 
@@ -155,7 +160,6 @@ if(empty($_POST["religion"]) | !isset($_POST["firstname"])){
     $error .= "Please select your religion<br>";
 }
 else {
-    //sanitize the string
     $religion = $_POST["religion"];
     
 }
@@ -189,42 +193,61 @@ else {
 
 
 //Check for image
-if($_FILES["file"]["error"] > 0){
-    $error .= "Please select an image<br>";
-}
-else {
-    $filename =  $_FILES["file"]["name"];     
-    $filetype = $_FILES["file"]["type"];
-    if(validateImageUsing($filename, $filetype) == -1){
-        $error .= "Only images of type jpg, gif, bmp or png are allowed<br>";
+    if(!isset($_FILES["file"])){  
+        $error .= "Unknown error with the image upload. Please select a valid image o";
     }
-    else if(validateImageUsing($filename, $filetype) == 0){
-        $error .= "Image size too large: Please select an image less than 2MB<br>";
+    else{
+        if($_FILES["file"]["error"] > 0){
+            $error .= "Please select an image<br>";
+        }
+        
+        else if($_FILES["file"]["error"] == UPLOAD_ERR_INI_SIZE){
+            $error .= "Image size too large: Please select an image less than 2MB<br>";
+        }
+
+        else {
+            $filename =  $_FILES["file"]["name"];     
+            $filetype = $_FILES["file"]["type"];
+            if(validateImageUsing($filename, $filetype) == -1){
+                $error .= "Only images of type jpg, gif, bmp or png are allowed<br>";
+            }
+            else if(validateImageUsing($filename, $filetype) == 0){
+                $error .= "Image size too large: Please select an image less than 2MB<br>";
+            }
+            else if(validateImageUsing($filename, $filetype) == 1){
+                $image = $filename;
+            }
+            else {
+                $error .= "Unknown error during image upload. Please try again later<br>";
+            }
+        }
+
     }
-    else if(validateImageUsing($filename, $filetype) == 1){
-        $image = $filename;
-    }
-    else {
-        $error .= "Unknown error during image upload. Please try again later<br>";
-    }
-    
-}
-   
+
+
+
+
+//Check if there are errors in any of the inputs
+//If there is an error, echo the error
 if($error != ""){
     echo $error;
 }
 
+//Otherwise, Insert all inputs into database
 else{
-    //Insert all fields into database
+    
+    //Create new database object
     $DB = new DB();
     
-    //Get access code of current applicant
+    //Get access code of current logged in applicant
     $accesscode = decodeAccessCode($_SESSION["acxsc"]);
     
     //hash the access code
     $accesscode = hash("sha256", $accesscode);
     
-    $result = insertIntoDatabaseTable($DB->conn, $accesscode, $firstname, $lastname, $address, $maritalstatus, $edubg, $bestsubjects, $religion, $stateoforigin, $dob, $image);
+    
+    //insert the inputs into database
+    $result = insertIntoDatabaseTable($DB->get_conn(), $accesscode, $firstname, $lastname, $address, $maritalstatus, $edubg, $bestsubjects, $religion, $stateoforigin, $dob, $image);
     
     if($result == -1){
         echo "Error in connection";
@@ -243,9 +266,8 @@ else{
         echo "Unknown error";
     }
     
+    //Close database connection
     $DB->close_conn();
-    
-   //insertIntoDatabaseTable($DB->conn, $firstname, $lastname, $address, $maritalstatus, $edubg, $bestsubjects, $religion, $stateoforigin, $dob, $image);
     
 }
 
