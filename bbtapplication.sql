@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2020 at 07:53 PM
+-- Generation Time: Jul 25, 2020 at 10:26 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -32,6 +32,14 @@ CREATE TABLE `accesscodestable` (
   `accesscode` varchar(64) NOT NULL,
   `registrationstatus` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `accesscodestable`
+--
+
+INSERT INTO `accesscodestable` (`id`, `accesscode`, `registrationstatus`) VALUES
+(1, '5b55bb7c3ca18d63e11b8a2ae01b66ae5c5351a257ed46ef0fd046205a3d3930', 0),
+(2, 'cda5a14c597b566a6cfd85caf83079fcb956dfb31ad8d40d90e5be2a23d88d40', 0);
 
 -- --------------------------------------------------------
 
@@ -79,7 +87,7 @@ ALTER TABLE `applicationdetails`
 -- AUTO_INCREMENT for table `accesscodestable`
 --
 ALTER TABLE `accesscodestable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `applicationdetails`
