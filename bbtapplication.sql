@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: Jul 26, 2020 at 08:40 AM
-=======
--- Generation Time: Jul 25, 2020 at 10:26 AM
->>>>>>> e05d65575da818be191dd6c368f6a4ca8083f406
+-- Generation Time: Jul 26, 2020 at 10:45 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -43,14 +39,10 @@ CREATE TABLE `accesscodestable` (
 
 INSERT INTO `accesscodestable` (`id`, `accesscode`, `registrationstatus`) VALUES
 (1, '5b55bb7c3ca18d63e11b8a2ae01b66ae5c5351a257ed46ef0fd046205a3d3930', 0),
-<<<<<<< HEAD
 (2, 'cda5a14c597b566a6cfd85caf83079fcb956dfb31ad8d40d90e5be2a23d88d40', 0),
 (3, '8cb3018c43ba24199a91ea383068878effbcec417e9f8fe9e31a38666ef16ffa', 0),
 (4, '084c90dc1638bc4bf16f5e68b430dc061500ececb60bbc17b93267cb56e55101', 0),
 (5, 'a19d14eb03105a20d85f7b97c3fe0c5d44188685aaaa1bfaf902078254723d51', 0);
-=======
-(2, 'cda5a14c597b566a6cfd85caf83079fcb956dfb31ad8d40d90e5be2a23d88d40', 0);
->>>>>>> e05d65575da818be191dd6c368f6a4ca8083f406
 
 -- --------------------------------------------------------
 
@@ -72,15 +64,6 @@ CREATE TABLE `applicationdetails` (
   `dateofbirth` date NOT NULL,
   `imageupload` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `applicationdetails`
---
-
-INSERT INTO `applicationdetails` (`id`, `accesscode_id`, `firstname`, `lastname`, `address`, `maritalstatus`, `edubg`, `bestsubjects`, `religion`, `stateoforigin`, `dateofbirth`, `imageupload`) VALUES
-(1, '2b12e549723bb69347afed6b89f94b0bc9516c147aed9b6eeb9a8990f6bb92f6', 'asdfadsf', 'dfasdfadsf', 'dwfasdfqds', 'Single', 'asdfads', 'Mathematics', 'christianity', 'asdfads', '2020-07-15', '1595666622download.gif'),
-(2, '44ad4c93ac307f9afdd118493322f4abbd63bbadb7b5b23f4341e48e2610fd81', 'asdfsd', 'fdasdf', 'dfasdf', 'Single', 'asdf', 'Mathematics', 'christianity', 'asdfadsf', '2020-07-06', '1595666749download.jpg'),
-(3, '5b55bb7c3ca18d63e11b8a2ae01b66ae5c5351a257ed46ef0fd046205a3d3930', 'sdfasdfk', 'hdkjfhakjsdhf', 'kjdhfkjashdfkjasdf', 'Single', 'ajshdkfhakjsdh', 'Mathematics', 'christianity', 'asdfadsf', '2020-07-15', '1595688847download.gif');
 
 --
 -- Indexes for dumped tables
@@ -107,17 +90,13 @@ ALTER TABLE `applicationdetails`
 -- AUTO_INCREMENT for table `accesscodestable`
 --
 ALTER TABLE `accesscodestable`
-<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> e05d65575da818be191dd6c368f6a4ca8083f406
 
 --
 -- AUTO_INCREMENT for table `applicationdetails`
 --
 ALTER TABLE `applicationdetails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
