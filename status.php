@@ -15,7 +15,7 @@ $DB = new DB();
 checkAccess();
 
 //CHECK IF USER HAS REGISTERED OR NOT (FUNCTION IS DEFINED IN "functions.php" file in "others" folder)
-checkRegistrationStatus($DB->conn, "apply.php");
+checkRegistrationStatus($DB->conn, "status.php");
        
 ?>
 
@@ -53,7 +53,7 @@ $subjects = getSubjects($details->bestsubjects);
                     <ul class="list text-left" style="list-style: none">
                         <?php 
                             foreach($subjects as $subject){  ?>
-                                <li class="list-items text-danger text-left ml-0 pl-0"><?php echo strtoupper($subject); ?></li>
+                                <li class="list-items text-danger text-left ml-0" style="padding-left:0"><?php echo strtoupper($subject); ?></li>
                             <?php 
                             }
                         ?>

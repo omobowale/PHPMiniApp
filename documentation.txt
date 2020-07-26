@@ -24,3 +24,17 @@ b. applicationdetails: it has the following properties(columns)
 	imageupload: type(text), notnull
 
 3. The sql file for the application is named bbtapplication.sql and is added to the folder for this application. This gives a clearer explanation of the tables.
+
+
+
+
+**Login details
+The following access codes are acceptable:
+    "accessc"
+    "accessk"
+    "access1"
+    "access2"
+Users can log in with any of these codes.
+
+
+

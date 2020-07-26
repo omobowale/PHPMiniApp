@@ -8,14 +8,25 @@ $(function(){
             
             $("#loginform").submit(function(event){
                 event.preventDefault();
-                var datatopost = $("#accesscodeinput").val();
+                var accesscode = $("#accesscode").val();
+               
                 $.ajax({
-                   url: "others/validateaccesscode.php",
-                    type: "POST",
-                    data: {val: datatopost},
-                    success: function(data){
+                    url: "others/validateaccesscode.php",
+                    type: "post",
+                    data: {accesscode: accesscode},
+                    success: function(rdata){
+                            //remove the newline character in the returned data
+                            ndata = rdata.substring(0, rdata.length-1);
+                         if(ndata === "false"){
+                            $("#message").attr("class", "alert alert-danger text-center").html("Error: Invalid access code");
+                         }
+                         else if(ndata.length == 64){
+                            window.location.href = "others/go.php?data=" + ndata;
+                         }
+                         else {
+                             $("#message").attr("class", "alert alert-danger text-center").html("Unknown error");
+                         }
                          
-                         window.location.href = "others/go.php?data=" + data;
                     },
                     error: function(){
                         $("#message").attr("class", "alert alert-danger text-center").html("Error: Could not load page");
@@ -34,7 +45,6 @@ $(function(){
                 event.preventDefault();
                 
                 var imagefile = $("#file").prop("files")[0];
-                console.log(imagefile);
                 
                 if(!((imagefile.type == "image/jpeg") || (imagefile.type == "image/png") || (imagefile.type == "image/gif") || (imagefile.type == "image/bmp") || (imagefile.type == "image/webp"))){
                     alert("Only images of type jpg, gif, bmp or png are allowed");

@@ -157,6 +157,9 @@ include_once("others/header_footer.php");
     
     <!--INCLUDE JS FILE TO PROCESS APPLICATION FORM-->
     <script src="js/index.js">
+        
+        
+    
     </script>
     
 </body>

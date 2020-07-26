@@ -1,0 +1,19 @@
+[24-Jul-2020 18:13:09 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/stiga/public_html/APPLICATION/apply.php on line 6
+[24-Jul-2020 18:13:09 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/apply.php:1) in /home/stiga/public_html/APPLICATION/others/functions.php on line 187
+[24-Jul-2020 18:25:10 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 179
+[25-Jul-2020 05:11:11 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 187
+[25-Jul-2020 05:11:11 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 179
+[25-Jul-2020 05:12:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 187
+[25-Jul-2020 05:12:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 179
+[25-Jul-2020 05:12:56 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 187
+[25-Jul-2020 05:12:56 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 179
+[25-Jul-2020 05:24:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 187
+[25-Jul-2020 05:24:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 179
+[25-Jul-2020 05:25:12 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 187
+[25-Jul-2020 05:25:12 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 179
+[25-Jul-2020 05:27:39 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 187
+[25-Jul-2020 05:27:39 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/stiga/public_html/APPLICATION/detail.php:6) in /home/stiga/public_html/APPLICATION/others/functions.php on line 179
+[25-Jul-2020 16:19:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function insertAccessCodeIntoDB() in /home/stiga/public_html/APPLICATION/login.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/stiga/public_html/APPLICATION/login.php on line 12

@@ -14,7 +14,7 @@ $DB = new DB();
 checkAccess();
 
 //CHECK IF USER HAS REGISTERED OR NOT (FUNCTION IS DEFINED IN "functions.php" file in "others" folder)
-checkRegistrationStatus($DB->conn, "apply.php");
+checkRegistrationStatus($DB->conn, "detail.php");
        
 ?>
 
@@ -77,7 +77,7 @@ $subjects = getSubjects($details->bestsubjects);
                         <th>Best subjects</th>
                     </tr>
                     <tr>
-                        <td><ul class="list" style="list-style: none; padding-left: 0">
+                        <td><ul class="list" style="list-style: none; padding-left: 0; margin-left:0">
                             <?php 
                                 foreach($subjects as $subject){  ?>
                                     <li><?php echo strtoupper($subject); ?></li>

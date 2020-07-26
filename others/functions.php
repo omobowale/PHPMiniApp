@@ -23,7 +23,7 @@ function checkdata($data){
     
     else{
         //if access code contains any special character
-        if(preg_match("/[\!@#$%^&*\s();:\"<>']/", $data)){
+        if(preg_match("/[\!@#$%^&*();:\"<>']/", $data)){
             $message = "<span class='text-danger'>Invalid access code</span>";
         }
 
@@ -40,14 +40,6 @@ function checkdata($data){
                 $db->close_conn();
             }
             
-            //instead, if the access code does not exist on both tables and its length is exactly 7, then it is valid
-            else if(accessCodeIsUnique($db->get_conn(), "accesscode", hash("sha256", $data), "accesscodestable") and accessCodeIsUnique($db->get_conn(), "accesscode_id", hash("sha256", $data), "applicationdetails") and strlen($data) == 7){
-                //create session with the access code
-                $_SESSION["acxsc"] = encodeAccessCode($data);
-                $message = hash("sha256", "valid");
-                $db->close_conn();
-            }
-            
             //instead, if the access code exists on both tables, then it already exists: user has already registered
             else if(accessCodeExists($db->get_conn(), "accesscode", hash("sha256", $data), "accesscodestable") and accessCodeExists($db->get_conn(), "accesscode_id", hash("sha256", $data), "applicationdetails")){
                 //create session with the access code
@@ -58,12 +50,12 @@ function checkdata($data){
 
             //Otherwise,
             else{
-                $message = "<span class='text-danger'>Access code is unknown</span>";
+                $message = "false";
             }
         }
     }
     
-    echo $message;
+    return $message;
 }
 
 
@@ -183,13 +175,12 @@ function accessCodeExists($conn, $column, $value, $table){
 }
 
 
-//function to insert access code into database table - accesscodestable
-function insertAccessCodeIntoDB($conn, $accesscode){
+//function to update registration status in database table - accesscodestable
+function updateRegistrationStatusInDB($conn, $accesscode){
     
-    //First check if accesscode is unique on database table
-    if(accessCodeIsUnique($conn, "accesscode", $accesscode, "accesscodestable")){
+   if(accessCodeExists($conn, "accesscode", $accesscode, "accesscodestable")){
  
-        $sql = "INSERT INTO accesscodestable (accesscode, registrationstatus) VALUE (?, ?)";
+        $sql = "UPDATE accesscodestable SET registrationstatus = ? WHERE accesscode = ?";
 
         if(!($stmt = $conn->prepare($sql))){
             //echo $conn->errno . " +++ " . $conn->error;
@@ -197,7 +188,7 @@ function insertAccessCodeIntoDB($conn, $accesscode){
         }
 
         $status = 1;
-        if(!$stmt->bind_param("si", $accesscode, $status)){
+        if(!$stmt->bind_param("is", $status, $accesscode)){
             //echo $stmt->errno . "   +++++ " . $stmt->error;
             return -1;
         }
@@ -291,8 +282,9 @@ function insertIntoDatabaseTable($conn, $accesscode_id, $firstname, $lastname, $
         }
         
         else{
-            if(insertAccessCodeIntoDB($conn, $accesscode_id) == 1){
-                return 1;
+            
+            if(updateRegistrationStatusInDB($conn, $accesscode_id) == 1){
+                  return 1;
             }
             return -1;
         }
