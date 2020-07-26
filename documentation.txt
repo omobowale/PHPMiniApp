@@ -23,12 +23,17 @@ b. applicationdetails: it has the following properties(columns)
 	dateofbirth: type(date), notnull
 	imageupload: type(text), notnull
 
+<<<<<<< HEAD
 3. The sql file for the application is named bbtapplication.sql and is added to the folder for this application. This gives a clearer explanation of the tables.
+=======
+3. The sql file for the application is named bbtapplication.sql and is added to the folder for this application
+>>>>>>> e05d65575da818be191dd6c368f6a4ca8083f406
 
 
 
 
 **Login details
+<<<<<<< HEAD
 The following access codes are acceptable:
     "accessc"
     "accessk"
@@ -37,4 +42,12 @@ The following access codes are acceptable:
 Users can log in with any of these codes.
 
 
+=======
+1. Two access codes "accessc" and "accessk" have been added to the accesscodestable.
+Users can log in with any of these codes.
+
+2. While the user can only log in with these access codes specified in 1 above, for
+testing purposes, the code has been modified to accept any unique alphanumeric word
+that has a length of 7. In other words, you can also log in with access codes like, "78hjty2", "ghbn4kl" e.t.c
+>>>>>>> e05d65575da818be191dd6c368f6a4ca8083f406
 
