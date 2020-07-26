@@ -17,7 +17,7 @@ $data = $_POST["accesscode"];
 $cdata = filter_var($data, FILTER_SANITIZE_STRING);
 
 //CHECK IF DATA IS VALID
-echo checkdata($data);
+echo checkdata($cdata);
 
 
 ?>
